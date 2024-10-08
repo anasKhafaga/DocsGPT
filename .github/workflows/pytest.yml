@@ -1,5 +1,8 @@
 name: Run python tests with pytest
-on: [push, pull_request]
+# on: [push, pull_request]
+on:
+  release:
+    type: published
 jobs:
   pytest_and_coverage:
     name: Run tests and count coverage
