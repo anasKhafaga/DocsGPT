@@ -27,6 +27,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: check
+        run: |
+          echo "${{ secrets.DOCKER_USERNAME }}/docsgpt:${{ github.event.release.tag_name }},${{ secrets.DOCKER_USERNAME }}/docsgpt:latest"
+          echo ${{secrets.DOCKER_USERNAME}}
+          echo ${{ github.event.release.tag_name }}
+
       - name: Build and push Docker images to docker.io and ghcr.io
         uses: docker/build-push-action@v4
         with:
